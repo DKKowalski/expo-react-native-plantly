@@ -34,12 +34,14 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: "center",
   },
   button: {
     paddingHorizontal: 18,
     paddingVertical: 12,
     borderRadius: 6,
     elevation: 5,
+    // alignItems: "center",
     backgroundColor: theme.colorPrimary,
   },
 

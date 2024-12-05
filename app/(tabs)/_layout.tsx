@@ -1,8 +1,10 @@
-import { Redirect, Tabs } from "expo-router";
+import { Link, Redirect, Tabs } from "expo-router";
 import Octicons from "@expo/vector-icons/Octicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { theme } from "../../theme";
 import { useUserStore } from "../../store/userStore";
+import { Pressable } from "react-native";
 // import { Text } from "react-native";
 
 export default function Layout() {
@@ -22,6 +24,18 @@ export default function Layout() {
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <Octicons name="home" size={size} color={color} />
+          ),
+
+          headerRight: () => (
+            <Link href={"/new"} asChild>
+              <Pressable hitSlop={30} style={{ marginRight: 18 }}>
+                <Ionicons
+                  name="add-circle-outline"
+                  size={34}
+                  color={theme.colorPrimary}
+                />
+              </Pressable>
+            </Link>
           ),
         }}
       />

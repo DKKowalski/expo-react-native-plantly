@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, Text, View } from "react-native";
 import { useUserStore } from "../store/userStore";
 import { useRouter } from "expo-router";
 import ButtonPressable from "../components/ButtonPressable";
@@ -18,7 +18,7 @@ export default function OnboardingScreen() {
   };
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" />
+      <StatusBar translucent backgroundColor="transparent" style="light" />
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
