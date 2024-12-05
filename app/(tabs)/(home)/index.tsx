@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { FlatList, StyleSheet, View, Text } from "react-native";
-import { theme } from "../../theme";
-import PlantCardComponent from "../../components/PlantCardComponent";
-import { usePlantStore } from "../../store/plantStore";
+import { theme } from "../../../theme";
+import PlantCardComponent from "../../../components/PlantCardComponent";
+import { usePlantStore } from "../../../store/plantStore";
 import { useRouter } from "expo-router";
-import ButtonPressable from "../../components/ButtonPressable";
+import ButtonPressable from "../../../components/ButtonPressable";
 
 export default function Page() {
   const router = useRouter();
@@ -25,15 +25,21 @@ export default function Page() {
               <View>
                 <Text style={styles.text}>No plants added</Text>
               </View>
-              <View>
+              {/* <View>
                 <ButtonPressable
                   title="Add new plant"
                   onPress={() => router.navigate("/new")}
                 ></ButtonPressable>
-              </View>
+              </View> */}
             </View>
           }
         />
+        <View style={styles.contentContainer}>
+          <ButtonPressable
+            title="Add new plant"
+            onPress={() => router.navigate("/new")}
+          ></ButtonPressable>
+        </View>
       </View>
     </>
   );

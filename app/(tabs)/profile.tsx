@@ -14,8 +14,8 @@ export default function Profile() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>profile</Text>
-      <ButtonPressable title="Go to onboarding!" onPress={handlePress} />
+      {/* <Text style={styles.text}>profile</Text> */}
+      <ButtonPressable title="Let me out!" onPress={handlePress} />
     </View>
   );
 }

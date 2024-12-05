@@ -17,6 +17,7 @@
     "@tamagui/metro-plugin": "^1.119.0",
     "@tamagui/static": "^1.119.0",
     "@tamagui/theme": "^1.119.0",
+    "date-fns": "^4.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "expo": "~52.0.14",

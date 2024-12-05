@@ -18,7 +18,7 @@ interface PlantState {
     name: string,
     wateringFrequencyDays: number,
     imageURI?: string
-  ) => void;
+  ) => Promise<void>;
   removePlants: (plantId: string) => void;
   waterPlant: (plantId: string) => void;
 }

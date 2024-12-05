@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import PlantImage from "./PlantImage";
 import { PlantType } from "../store/plantStore";
 import { theme } from "../theme";
+import { Link } from "expo-router";
 
 interface PlantCardProps {
   plant: PlantType;
@@ -10,20 +11,22 @@ interface PlantCardProps {
 
 export default function PlantCardComponent({ plant }: PlantCardProps) {
   return (
-    <View style={styles.card}>
-      <View style={styles.imageContainer}>
-        <PlantImage size={80} imageURI={plant.imageURI} />
-      </View>
+    <Link href={`plant/${plant.id}`} asChild>
+      <Pressable style={styles.card}>
+        <View style={styles.imageContainer}>
+          <PlantImage size={80} imageURI={plant.imageURI} />
+        </View>
 
-      <View style={styles.detailsContainer}>
-        <Text numberOfLines={1} style={styles.name}>
-          {plant.name}
-        </Text>
-        <Text style={styles.wateringFrequencyDays}>
-          Water every {plant.wateringFrequencyDays} days
-        </Text>
-      </View>
-    </View>
+        <View style={styles.detailsContainer}>
+          <Text numberOfLines={1} style={styles.name}>
+            {plant.name}
+          </Text>
+          <Text style={styles.wateringFrequencyDays}>
+            Water every {plant.wateringFrequencyDays} days
+          </Text>
+        </View>
+      </Pressable>
+    </Link>
   );
 }
 
