@@ -1,18 +1,39 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View, Text } from "react-native";
 import { theme } from "../../theme";
+import PlantCardComponent from "../../components/PlantCardComponent";
+import { usePlantStore } from "../../store/plantStore";
+import { useRouter } from "expo-router";
+import ButtonPressable from "../../components/ButtonPressable";
 
 export default function Page() {
+  const router = useRouter();
+  const plants = usePlantStore((state) => state.plants);
+
   return (
     <>
-    <StatusBar backgroundColor={theme.colorPrimary} style="light"/>
+      <StatusBar backgroundColor={theme.colorPrimary} style="light" />
       <View style={styles.container}>
-        <View style={styles.main}>
-          <Text style={styles.title}>Hello World</Text>
-          <Text style={styles.subtitle}>
-            This is the first page of your app.
-          </Text>
-        </View>
+        <FlatList
+          contentContainerStyle={styles.contentContainer}
+          data={plants}
+          renderItem={({ item }) => (
+            <PlantCardComponent key={item.id} plant={item} />
+          )}
+          ListEmptyComponent={
+            <View style={styles.listEmptyContainer}>
+              <View>
+                <Text style={styles.text}>No plants added</Text>
+              </View>
+              <View>
+                <ButtonPressable
+                  title="Add new plant"
+                  onPress={() => router.navigate("/new")}
+                ></ButtonPressable>
+              </View>
+            </View>
+          }
+        />
       </View>
     </>
   );
@@ -21,21 +42,20 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    backgroundColor: theme.backgroundColor,
+  },
+
+  contentContainer: {
     padding: 24,
   },
-  main: {
+
+  text: {
+    // textAlign: "center",
+    marginBottom: 18,
+    fontSize: 18,
+  },
+
+  listEmptyContainer: {
     flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
   },
 });
